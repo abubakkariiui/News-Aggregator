@@ -11,7 +11,7 @@ const newsTypes = [
   },
   {
     name: "Canada",
-    href: "/search/uk",
+    href: "/search/canada",
   },
   {
     name: "Asia",
@@ -72,8 +72,9 @@ export default function Header() {
       >
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <p className="text-2xl uppercase font-semibold">HeadlineHub</p>
+            <p className="text-base sm:text-2xl uppercase font-semibold">
+              HeadlineHub
+            </p>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -119,7 +120,12 @@ export default function Header() {
                       onClick={closePopover}
                       className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
                     >
-                      <div className="flex-auto">
+                      <div
+                        className="flex-auto"
+                        onClick={() => {
+                          closePopover();
+                        }}
+                      >
                         <Link
                           to={item.href}
                           className="block font-semibold text-gray-900"
@@ -187,10 +193,9 @@ export default function Header() {
       >
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-16">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <p className="text-2xl uppercase font-semibold">HeadlineHub</p>
+              <p className="uppercase font-semibold">HeadlineHub</p>
             </a>
             <button
               type="button"
@@ -217,6 +222,17 @@ export default function Header() {
                           aria-hidden="true"
                         />
                       </Disclosure.Button>
+                      <Disclosure.Panel className="mt-2 space-y-2">
+                        {newsTypes.map((item) => (
+                          <Link
+                            key={item.name}
+                            to={item.href}
+                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </Disclosure.Panel>
                     </>
                   )}
                 </Disclosure>
@@ -233,7 +249,7 @@ export default function Header() {
                   Tech
                 </Link>
                 <Link
-                  to="/"
+                  to={"/"}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   More

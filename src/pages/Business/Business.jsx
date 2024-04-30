@@ -38,7 +38,7 @@ const Business = () => {
         <p>Error fetching data</p>
       ) : (
         <>
-          <h1 className="text-2xl font-semibold mb-6 text-center">
+          <h1 className="text-xl sm:text-2xl font-semibold mb-6 text-center">
             News - Top Business Headlines
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
