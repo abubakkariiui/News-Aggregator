@@ -68,7 +68,6 @@ export default function Header() {
 
   const closePopover = () => {
     setDesktopMenuOpen(false);
-    setMobileMenuOpen(false); // Close mobile menu as well
   };
 
   const handleSubmit = (e) => {
@@ -194,7 +193,6 @@ export default function Header() {
                   type="search"
                 />
               </div>
-              
             </form>
           </div>
         </div>
