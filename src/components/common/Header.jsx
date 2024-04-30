@@ -157,31 +157,30 @@ export default function Header() {
             More
           </a>
         </Popover.Group>
+
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <form
-              className="flex w-full max-w-80 lg:ml-8"
-              onSubmit={handleSubmit}
-            >
-              <label htmlFor="search" className="sr-only">
-                Search
-              </label>
-              <div className="relative w-full text-gray-400 focus-within:text-gray-600">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <input
-                  id="search"
-                  name="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="block w-full border h-11 pl-10 pr-3 text-sm font-semibold leading-6 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent rounded-lg"
-                  placeholder="Search business, sports, health, technology..."
-                  type="search"
-                />
+          <form
+            className="flex w-full max-w-80 lg:ml-8"
+            onSubmit={handleSubmit}
+          >
+            <label htmlFor="search" className="sr-only">
+              Search
+            </label>
+            <div className="relative w-full text-gray-400 focus-within:text-gray-600">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
               </div>
-            </form>
-          </div>
+              <input
+                id="search"
+                name="search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="block w-full border h-11 pl-10 pr-3 text-sm font-semibold leading-6 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent rounded-lg"
+                placeholder="Search technology, sports, health..."
+                type="search"
+              />
+            </div>
+          </form>
         </div>
       </nav>
       {/* Mobile menu */}
