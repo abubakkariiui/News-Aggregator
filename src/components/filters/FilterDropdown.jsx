@@ -1,0 +1,1 @@
+// Dummy file for news-aggregator/src/components/filters/FilterDropdown.js
