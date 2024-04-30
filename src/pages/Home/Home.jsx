@@ -51,16 +51,11 @@ const Home = () => {
                     article.byline.original !== null &&
                     !article.headline.main.includes("removed")
                 )
-                .map(
-                  (article, index) => (
-                    console.log(article),
-                    (
-                      <>
-                        <ArticleCard key={index} article={article} />
-                      </>
-                    )
-                  )
-                )}
+                .map((article, index) => (
+                  <>
+                    <ArticleCard key={index} article={article} />
+                  </>
+                ))}
             </div>
           </>
         )}

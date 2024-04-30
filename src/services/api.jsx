@@ -37,20 +37,6 @@ export const fetchTechCrunch = async (sortBy = "publishedAt") => {
   }
 };
 
-// https://newsapi.org/v2/top-headlines?country=us&category={}&apiKey=561c89854df44356b5098bc06c0b36fb
-
-export const fetchCategory = async (category) => {
-  try {
-    const response = await axios.get(
-      `/top-headlines?country=us&pageSize=${pageSize}&category=${category}&apiKey=${apiKey}`
-    );
-    return response;
-  } catch (error) {
-    console.error("Error fetching category:", error);
-    throw error;
-  }
-};
-
 // https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=IQuKKAQ1lGkBkOmC63pZ9XZQB7Na3DRF
 
 export const fetchNYTimes = async (query = "international") => {
