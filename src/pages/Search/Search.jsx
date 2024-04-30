@@ -11,7 +11,7 @@ import NotFound from "../../components/NotFound/NotFound";
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("publishedAt"); // Default sorting
-  const { articles, loading } = useSelector((state) => state.search);
+  const { articles, loading, error } = useSelector((state) => state.search);
   const { query } = useParams();
 
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ const Search = () => {
           <>
             <Loading />
           </>
-        ) : loading ? (
+        ) : error ? (
           <>
             <NotFound />
           </>

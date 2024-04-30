@@ -4,6 +4,7 @@ import Tech from "../pages/Tech/Tech";
 import Home from "../pages/Home/Home";
 import Search from "../pages/Search/Search";
 import Header from "../components/common";
+
 export const routes = createBrowserRouter([
   {
     path: "/",

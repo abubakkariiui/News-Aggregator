@@ -1,9 +1,14 @@
-import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from "../action/actionTypes";
+import {
+  SEARCH_REQUEST,
+  SEARCH_SUCCESS,
+  SEARCH_FAILURE,
+} from "../action/actionTypes";
 
 const initialState = {
   articles: [],
   query: "",
   loading: false,
+  error: null,
 };
 
 const searchArticle = (state = initialState, action) => {
@@ -14,6 +19,7 @@ const searchArticle = (state = initialState, action) => {
         articles: action.payload.articles,
         query: action.payload.query,
         loading: false,
+        error: null,
       };
     case SEARCH_FAILURE:
       return {
@@ -25,6 +31,7 @@ const searchArticle = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: null,
       };
     default:
       return state;

@@ -42,12 +42,19 @@ export const fetchTechCrunch = async (sortBy = "publishedAt") => {
 export const fetchNYTimes = async (
   query = "international",
   sort = "newest",
-  page = 0 // Default page number is 0
+  page = 0, // Default page number is 0
+  beginDate = null,
+  endDate = null
 ) => {
   try {
-    const response = await axios.get(
-      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&sort=${sort}&page=${page}&api-key=${nytAPIKey}`
-    );
+    let url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&sort=${sort}&page=${page}&api-key=${nytAPIKey}`;
+
+    // Add beginDate and endDate to the URL if provided
+    if (beginDate && endDate) {
+      url += `&begin_date=${beginDate}&end_date=${endDate}`;
+    }
+
+    const response = await axios.get(url);
     return response;
   } catch (error) {
     console.error("Error fetching NYTimes:", error);

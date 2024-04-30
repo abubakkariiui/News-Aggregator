@@ -15,10 +15,10 @@ function DropdownMenu({ handleSortBy, menuItems }) {
     <div className="relative inline-block text-left">
       <Menu>
         <div>
-          <Menu.Button className="border inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium   focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+          <Menu.Button className="border py-1.5 inline-flex w-full justify-center rounded-md px-4 text-sm font-medium   focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
             Sort By {selectedOption}
             <ChevronDownIcon
-              className="-mr-1 ml-2 h-5 w-5 text-violet-200 hover:text-violet-100"
+              className="ml-2 h-5 w-5 text-violet-200 hover:text-violet-100"
               aria-hidden="true"
             />
           </Menu.Button>
@@ -34,8 +34,8 @@ function DropdownMenu({ handleSortBy, menuItems }) {
         >
           <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
             <div className="px-1 py-1">
-              {menuItems.map((item) => (
-                <Menu.Item key={item.value}>
+              {menuItems.map((item, index) => (
+                <Menu.Item key={index}>
                   {({ active }) => (
                     <button
                       className={`${
