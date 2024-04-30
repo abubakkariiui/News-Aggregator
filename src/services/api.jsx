@@ -39,10 +39,14 @@ export const fetchTechCrunch = async (sortBy = "publishedAt") => {
 
 // https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=IQuKKAQ1lGkBkOmC63pZ9XZQB7Na3DRF
 
-export const fetchNYTimes = async (query = "international") => {
+export const fetchNYTimes = async (
+  query = "international",
+  sort = "newest",
+  page = 0 // Default page number is 0
+) => {
   try {
     const response = await axios.get(
-      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${nytAPIKey}`
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&sort=${sort}&page=${page}&api-key=${nytAPIKey}`
     );
     return response;
   } catch (error) {

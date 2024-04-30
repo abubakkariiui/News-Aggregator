@@ -9,6 +9,11 @@ const ArticleCard = ({ article }) => {
     article.multimedia?.[0]?.url || "https://placehold.co/600x400";
   const articleUrl = article.web_url || "#";
 
+  const handleImageError = (e) => {
+    e.target.onerror = null;
+    e.target.src = "https://placehold.co/600x400?text=No+Image+Found";
+  };
+
   return (
     <>
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition duration-300">
@@ -18,6 +23,7 @@ const ArticleCard = ({ article }) => {
             "https://placehold.co/600x400?text=No+Image+Found"
           }
           alt={headline}
+          onError={handleImageError}
           className="w-full h-56 object-cover"
         />
         <div className="p-4">

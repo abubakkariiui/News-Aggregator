@@ -6,6 +6,7 @@ import { capitaLize } from "../../utils/helpers";
 import Loading from "../../components/Loading/Loading";
 import DropdownMenu from "../../components/DropDown/DropdownMenu";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
+import NotFound from "../../components/NotFound/NotFound";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,7 +57,9 @@ const Search = () => {
             <Loading />
           </>
         ) : loading ? (
-          <p>Error fetching data</p>
+          <>
+            <NotFound />
+          </>
         ) : (
           <>
             <h1 className="text-2xl font-semibold mb-6 text-center">

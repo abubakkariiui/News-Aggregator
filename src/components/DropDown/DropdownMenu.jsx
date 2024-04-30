@@ -4,7 +4,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import PropTypes from "prop-types";
 
 function DropdownMenu({ handleSortBy, menuItems }) {
-  const [selectedOption, setSelectedOption] = useState("publishedAt");
+  const [selectedOption, setSelectedOption] = useState("relevance");
 
   const handleSelectOption = (option) => {
     setSelectedOption(option);

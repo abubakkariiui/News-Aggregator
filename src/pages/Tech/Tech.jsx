@@ -2,16 +2,33 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchNYTimes } from "../../services/api";
 import Loading from "../../components/Loading/Loading";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
+import DropdownMenu from "../../components/DropDown/DropdownMenu";
+import { useState } from "react";
 
 const Tech = () => {
+  const [sort, setSort] = useState("newest");
+
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["news"],
-    queryFn: () => fetchNYTimes("tech"),
+    queryKey: ["news", sort],
+    queryFn: () => fetchNYTimes("tech", sort),
   });
+
+  const handleQuery = (sortBy) => {
+    setSort(sortBy);
+  };
 
   return (
     <div className="w-full p-6">
-      <div className="mb-4 flex justify-end items-center"></div>
+      <div className="mb-4 flex justify-end items-center">
+        <DropdownMenu
+          handleSortBy={handleQuery}
+          menuItems={[
+            { label: "Newest", value: "newest" },
+            { label: "Oldest", value: "oldest" },
+            { label: "Relevance", value: "relevance" },
+          ]}
+        />
+      </div>
       {isLoading ? (
         <>
           <Loading />
