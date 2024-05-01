@@ -27,6 +27,20 @@ The project is structured as follows:
 2. Install dependencies with `npm install`.
 3. Start the development server with `npm run dev`.
 
+## Prerequisites for docker only
+
+Before you begin, ensure you have Docker installed on your system. You can download and install Docker from [https://www.docker.com/get-started](https://www.docker.com/get-started).
+
+## Building the Docker Image
+```
+docker build -t news-aggregator .
+```
+
+## Running the Docker Container
+```
+docker run -p 3000:3000 react-vite-app
+```
+
 ## Scripts
 
 - `npm run dev`: Starts the development server. This server automatically reloads the application whenever you save a file, making it easier to develop and test the application.
