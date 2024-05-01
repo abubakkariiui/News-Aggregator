@@ -10,10 +10,13 @@ const NotFound = ({ query }) => {
         We couldn&apos;t find any articles or news related to &quot;{query}
         &quot;.
       </p>
-      <p className="text-sm text-gray-600">
-        It seems the topic you&apos;re searching for isn&apos;t available.
-        Please try searching for other topics like health, sports, or
-        technology.
+      <p className="text-base text-red-500 mb-4">
+        It's testing purpose API which has rate limit and hit limit per seconds
+        so may be it's an issue.
+      </p>
+      <p className="text-base text-gray-600">
+        It seems the topic you&apos;re searching for isn&apos;t available. Rate
+        limit quota violation. Quota limit exceeded.
       </p>
     </div>
   );

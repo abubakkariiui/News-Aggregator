@@ -4,9 +4,12 @@ import Loading from "../../components/Loading/Loading";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
 import DropdownMenu from "../../components/DropDown/DropdownMenu";
 import { useState } from "react";
+import NotFound from "../../components/NotFound/NotFound";
 
 const Tech = () => {
   const [sort, setSort] = useState("newest");
+
+  document.title = "Tech - News";
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["news", sort],
@@ -34,7 +37,9 @@ const Tech = () => {
           <Loading />
         </>
       ) : isError ? (
-        <p>Error fetching data</p>
+        <>
+          <NotFound />
+        </>
       ) : (
         <>
           <h1 className="text-xl sm:text-2xl font-semibold mb-6 text-center">

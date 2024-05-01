@@ -1,12 +1,15 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNYTimes } from "../../services/api";
 import Loading from "../../components/Loading/Loading";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
 import DropdownMenu from "../../components/DropDown/DropdownMenu";
-import { useState } from "react";
+import NotFound from "../../components/NotFound/NotFound";
 
 const Business = () => {
   const [sort, setSort] = useState("newest");
+
+  document.title = "Business - News";
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["news", sort],
@@ -35,7 +38,9 @@ const Business = () => {
           <Loading />
         </>
       ) : isError ? (
-        <p>Error fetching data</p>
+        <>
+          <NotFound />
+        </>
       ) : (
         <>
           <h1 className="text-xl sm:text-2xl font-semibold mb-6 text-center">
