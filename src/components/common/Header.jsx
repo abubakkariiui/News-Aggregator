@@ -30,6 +30,7 @@ function classNames(...classes) {
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [desktopMenuOpen, setDesktopMenuOpen] = useState(false);
+  const [moreMenuOpen, setMoreMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const popoverRef = useRef(null); // Ref for popover panel
 
@@ -44,7 +45,7 @@ export default function Header() {
     }
 
     // Add event listener when the popover is open
-    if (desktopMenuOpen || mobileMenuOpen) {
+    if (desktopMenuOpen || mobileMenuOpen || moreMenuOpen) {
       document.addEventListener("click", handleClickOutside);
     }
 
@@ -52,10 +53,11 @@ export default function Header() {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [desktopMenuOpen, mobileMenuOpen]);
+  }, [desktopMenuOpen, mobileMenuOpen, moreMenuOpen]);
 
   const closePopover = () => {
     setDesktopMenuOpen(false);
+    setMoreMenuOpen(false);
   };
 
   const handleSubmit = (e) => {
@@ -88,9 +90,7 @@ export default function Header() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          {/* Popover */}
           <Popover className="relative" ref={popoverRef}>
-            {/* Popover Button */}
             <Popover.Button
               onClick={() => setDesktopMenuOpen(!desktopMenuOpen)}
               className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
@@ -101,7 +101,6 @@ export default function Header() {
                 aria-hidden="true"
               />
             </Popover.Button>
-            {/* Popover Panel */}
             <Transition
               as={Fragment}
               show={desktopMenuOpen}
@@ -140,7 +139,6 @@ export default function Header() {
               </Popover.Panel>
             </Transition>
           </Popover>
-          {/* Other menu items */}
           <Link
             to="/business"
             className="text-sm font-semibold leading-6 text-gray-900"
@@ -153,9 +151,46 @@ export default function Header() {
           >
             Tech
           </Link>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            More
-          </a>
+
+          <Popover className="relative" ref={popoverRef}>
+            <Popover.Button
+              onClick={() => setMoreMenuOpen(!moreMenuOpen)}
+              className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+            >
+              Life Style
+              <ChevronDownIcon
+                className="h-5 w-5 flex-none text-gray-400"
+                aria-hidden="true"
+              />
+            </Popover.Button>
+            <Transition
+              as={Fragment}
+              show={moreMenuOpen}
+              enter="transition ease-out duration-200"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-[14vw] max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                <div className="p-4">
+                  <Link
+                    to="search/travel"
+                    className="block font-semibold text-gray-900 hover:bg-gray-50 p-2 rounded-lg"
+                  >
+                    Travel
+                  </Link>
+                  <Link
+                    to="search/food"
+                    className="block font-semibold text-gray-900 hover:bg-gray-50 p-2 rounded-lg"
+                  >
+                    Food
+                  </Link>
+                </div>
+              </Popover.Panel>
+            </Transition>
+          </Popover>
         </Popover.Group>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -248,10 +283,10 @@ export default function Header() {
                   Tech
                 </Link>
                 <Link
-                  to={"/"}
+                  to="/search/books"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  More
+                  Books
                 </Link>
               </div>
               <div className="py-6">
