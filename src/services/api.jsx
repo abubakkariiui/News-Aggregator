@@ -14,6 +14,7 @@ export const fetchNYTimes = async (
   endDate = null
 ) => {
   try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     let url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&sort=${sort}&page=${page}&api-key=${nytAPIKey}`;
 
     // Add beginDate and endDate to the URL if provided
